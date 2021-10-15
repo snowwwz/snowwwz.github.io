@@ -1,0 +1,171 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Posts on Wouldn&#39;t It Be Nice</title>
+		<link>https://yukinooz.github.io/posts/</link>
+		<description>Recent content in Posts on Wouldn&#39;t It Be Nice</description>
+		<generator>Hugo -- gohugo.io</generator>
+		<language>en-us</language>
+		<copyright>Copyright since 2020 Reona Shimada All Rights Reserved.</copyright>
+		<lastBuildDate>Fri, 15 Oct 2021 11:25:47 +0900</lastBuildDate>
+		<atom:link href="https://yukinooz.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>golang deferの挙動</title>
+			<link>https://yukinooz.github.io/posts/2021/20211015_go_defer/</link>
+			<pubDate>Fri, 15 Oct 2021 11:25:47 +0900</pubDate>
+			
+			<guid>https://yukinooz.github.io/posts/2021/20211015_go_defer/</guid>
+			<description>defer A defer statement defers the execution of a function until the surrounding function returns. The deferred call&amp;rsquo;s arguments are evaluated immediately, but the function call is not executed until the surrounding function returns. A tour of go: defer 関数が終了する際に実行すべき処理を記述できる 遅延実行される関数</description>
+			<content type="html"><![CDATA[<h1 id="defer">defer</h1>
+<blockquote>
+<p>A defer statement defers the execution of a function until the surrounding function returns.
+The deferred call&rsquo;s arguments are evaluated immediately, but the function call is not executed until the surrounding function returns.</p>
+</blockquote>
+<ul>
+<li><a href="https://tour.golang.org/flowcontrol/12">A tour of go: defer</a></li>
+<li>関数が終了する際に実行すべき処理を記述できる</li>
+<li>遅延実行される関数の引数は即時評価され、実行のみ遅延される</li>
+</ul>
+<h3 id="用途">用途</h3>
+<ul>
+<li>後片付けに使われる</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;fmt&#34;</span>
+	<span class="s">&#34;io&#34;</span>
+	<span class="s">&#34;os&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">// deferを使わないと途中でエラー終了した際にファイルがクローズされない
+</span><span class="c1"></span>	<span class="nx">err</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">()</span> <span class="kt">error</span> <span class="p">{</span>
+		<span class="nx">file</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Open</span><span class="p">(</span><span class="s">&#34;aaa.txt&#34;</span><span class="p">)</span>
+		<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="nx">err</span>
+		<span class="p">}</span>
+
+		<span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">io</span><span class="p">.</span><span class="nf">ReadAll</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="nx">err</span>
+		<span class="p">}</span>
+
+		<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">file</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="nx">err</span>
+		<span class="p">}</span>
+		<span class="k">return</span> <span class="kc">nil</span>
+	<span class="p">}()</span>
+
+	<span class="c1">// defer使えばエラーが起きてもクローズされる
+</span><span class="c1"></span>	<span class="nx">err</span> <span class="p">=</span> <span class="kd">func</span><span class="p">()</span> <span class="kt">error</span> <span class="p">{</span>
+		<span class="nx">file</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Open</span><span class="p">(</span><span class="s">&#34;aaa.txt&#34;</span><span class="p">)</span>
+		<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="nx">err</span>
+		<span class="p">}</span>
+		<span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">file</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+			   <span class="c1">// do something
+</span><span class="c1"></span>			<span class="p">}</span>
+		<span class="p">}()</span>
+
+		<span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">io</span><span class="p">.</span><span class="nf">ReadAll</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="nx">err</span>
+		<span class="p">}</span>
+
+		<span class="k">return</span> <span class="kc">nil</span>
+	<span class="p">}()</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="特徴">特徴</h3>
+<ul>
+<li>LIFO：後入先出法で実行される</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="s">&#34;G&#34;</span><span class="p">)</span> <span class="c1">// 8
+</span><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="s">&#34;B&#34;</span><span class="p">)</span> <span class="c1">// 1
+</span><span class="c1"></span>
+	<span class="nx">_</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="kd">func</span><span class="p">()</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="s">&#34;L&#34;</span><span class="p">)</span> <span class="c1">// 2
+</span><span class="c1"></span>		<span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="s">&#34;I&#34;</span><span class="p">)</span> <span class="c1">// 6
+</span><span class="c1"></span>		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="s">&#34;O&#34;</span><span class="p">)</span> <span class="c1">// 3
+</span><span class="c1"></span>		<span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="s">&#34;G&#34;</span><span class="p">)</span> <span class="c1">// 5
+</span><span class="c1"></span>
+		<span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="s">&#34;G&#34;</span><span class="p">)</span><span class="c1">// 4
+</span><span class="c1"></span>	<span class="p">}()</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="s">&#34;N&#34;</span><span class="p">)</span> <span class="c1">// 7
+</span><span class="c1"></span><span class="p">}</span>
+
+
+<span class="c1">// =&gt; BLOGGING
+</span></code></pre></div><ul>
+<li>returnの値を変えるには名前付き戻り値を使う
+<ul>
+<li><a href="https://tour.golang.org/basics/7">a tour of go: Named return values</a></li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;fmt&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">// 関数内で返り値の変数を定義/初期化
+</span><span class="c1"></span>	<span class="nx">x</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
+		<span class="nx">a</span> <span class="o">:=</span> <span class="mi">0</span>
+		<span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+			<span class="nx">a</span> <span class="p">=</span> <span class="mi">1</span>
+		<span class="p">}()</span>
+
+		<span class="k">return</span> <span class="nx">a</span>
+	<span class="p">}()</span>
+
+	<span class="c1">// 名前付き戻り値を指定
+</span><span class="c1"></span>	<span class="nx">y</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">()</span> <span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+			<span class="nx">a</span> <span class="p">=</span> <span class="mi">1</span>
+		<span class="p">}()</span>
+
+		<span class="k">return</span> <span class="nx">a</span>
+	<span class="p">}()</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;x= %d\ny= %d&#34;</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// =&gt; x= 0
+</span><span class="c1">//    y= 1
+</span></code></pre></div><ul>
+<li>遅延実行される関数の引数は即時評価され、実行のみ遅延される</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">x</span> <span class="o">:=</span> <span class="s">&#34;xxxxx&#34;</span>
+		<span class="nx">x</span> <span class="p">=</span> <span class="s">&#34;yyyyy&#34;</span>
+		<span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+	<span class="p">}()</span>
+
+	<span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">x</span> <span class="o">:=</span> <span class="s">&#34;xxxxx&#34;</span>
+		<span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+		<span class="nx">x</span> <span class="p">=</span> <span class="s">&#34;yyyyy&#34;</span>
+	<span class="p">}()</span>
+<span class="p">}</span>
+
+<span class="c1">// =&gt; yyyyy
+</span><span class="c1">//    XXXXX
+</span></code></pre></div>]]></content>
+		</item>
+		
+	</channel>
+</rss>
