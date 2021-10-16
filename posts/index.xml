@@ -6,8 +6,36 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>Copyright since 2020 Reona Shimada All Rights Reserved.</copyright>
-		<lastBuildDate>Fri, 15 Oct 2021 11:25:47 +0900</lastBuildDate>
+		<lastBuildDate>Sat, 16 Oct 2021 10:16:47 +0900</lastBuildDate>
 		<atom:link href="https://yukinooz.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>ロンドン大学のCS オンライン学士に入学をした</title>
+			<link>https://yukinooz.github.io/posts/2021/20211016_uol_enroll/</link>
+			<pubDate>Sat, 16 Oct 2021 10:16:47 +0900</pubDate>
+			
+			<guid>https://yukinooz.github.io/posts/2021/20211016_uol_enroll/</guid>
+			<description>概要 Coursera上の学士プログラム、ロンドン大学BSc CSに2021年10月より入学した。 会社は辞めないので、パートタイムで単位取得して</description>
+			<content type="html"><![CDATA[<h1 id="概要">概要</h1>
+<p>Coursera上の学士プログラム、ロンドン大学BSc CSに2021年10月より入学した。
+会社は辞めないので、パートタイムで単位取得していく社会人学生になった。</p>
+<h1 id="背景">背景</h1>
+<p>コンピューターサイエンスを学問として体系的に学びたかったこと。</p>
+<p>文系出身でエンジニアやってきて、自分の数学や情報学の学問的な素養が根本から欠如していることを痛感することは少なからずあったこと、全くの未知な分野にキャッチアップする際も、やはり学問的バックグラウンドを持っている人と比べると理解のスピードが違ったり、いつかちゃんと学びたいなとはずっと思っていた。</p>
+<p>3年目になりタイミング的にも、今腰を据えて自分の職業分野を学問として向き合ってみることにした。</p>
+<h1 id="参考リンク">参考リンク</h1>
+<ul>
+<li><a href="https://london.ac.uk/courses/computer-science">公式</a></li>
+<li><a href="https://www.reddit.com/r/UniversityOfLondonCS/">reddit</a></li>
+<li><a href="https://discord.com/channels/609355808010010654/609355808010010657">discord</a></li>
+<li><a href="coursera.org/degrees/bachelor-of-science-computer-science-london">coursera University of London</a></li>
+<li><a href="https://github.com/world-class/REPL">github REPL</a></li>
+</ul>
+<h1 id="今後">今後</h1>
+<p>高校卒業から5年経過し数学の成績が証明できなかったのもあり、最初の学期は2科目固定で成績上位になる必要があるみたい。
+完走できるか不安多いけど、まずは1学期いい成績残して正式入学を目指します~~</p>
+]]></content>
+		</item>
 		
 		<item>
 			<title>golang deferの挙動</title>
@@ -165,34 +193,6 @@ The deferred call&rsquo;s arguments are evaluated immediately, but the function 
 <span class="c1">// =&gt; yyyyy
 </span><span class="c1">//    XXXXX
 </span></code></pre></div>]]></content>
-		</item>
-		
-		<item>
-			<title>ロンドン大学のCS オンライン学士に入学をした</title>
-			<link>https://yukinooz.github.io/posts/2021/20211016_uol_enroll/</link>
-			<pubDate>Fri, 15 Oct 2021 11:25:47 +0900</pubDate>
-			
-			<guid>https://yukinooz.github.io/posts/2021/20211016_uol_enroll/</guid>
-			<description>概要 Coursera上の学士プログラム、ロンドン大学BSc CSに2021年10月より入学した。 会社は辞めないので、パートタイムで単位取得して</description>
-			<content type="html"><![CDATA[<h1 id="概要">概要</h1>
-<p>Coursera上の学士プログラム、ロンドン大学BSc CSに2021年10月より入学した。
-会社は辞めないので、パートタイムで単位取得していく社会人学生になった。</p>
-<h1 id="背景">背景</h1>
-<p>コンピューターサイエンスを学問として体系的に学びたかったこと。</p>
-<p>文系出身でエンジニアやってきて、自分の数学や情報学の学問的な素養が根本から欠如していることを痛感することは少なからずあったこと、全くの未知な分野にキャッチアップする際も、やはり学問的バックグラウンドを持っている人と比べると理解のスピードが違ったり、いつかちゃんと学びたいなとはずっと思っていた。</p>
-<p>3年目になりタイミング的にも、今腰を据えて自分の職業分野を学問として向き合ってみることにした。</p>
-<h1 id="参考リンク">参考リンク</h1>
-<ul>
-<li><a href="https://london.ac.uk/courses/computer-science">公式</a></li>
-<li><a href="https://www.reddit.com/r/UniversityOfLondonCS/">reddit</a></li>
-<li><a href="https://discord.com/channels/609355808010010654/609355808010010657">discord</a></li>
-<li><a href="coursera.org/degrees/bachelor-of-science-computer-science-london">coursera University of London</a></li>
-<li><a href="https://github.com/world-class/REPL">github REPL</a></li>
-</ul>
-<h1 id="今後">今後</h1>
-<p>高校卒業から5年経過し数学の成績が証明できなかったのもあり、最初の学期は2科目固定で成績上位になる必要があるみたい。
-完走できるか不安多いけど、まずは1学期いい成績残して正式入学を目指します~~</p>
-]]></content>
 		</item>
 		
 	</channel>

@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright since 2020 Reona Shimada All Rights Reserved.</copyright>
-    <lastBuildDate>Fri, 15 Oct 2021 11:25:47 +0900</lastBuildDate><atom:link href="https://yukinooz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Oct 2021 10:16:47 +0900</lastBuildDate><atom:link href="https://yukinooz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ロンドン大学のCS オンライン学士に入学をした</title>
+      <link>https://yukinooz.github.io/posts/2021/20211016_uol_enroll/</link>
+      <pubDate>Sat, 16 Oct 2021 10:16:47 +0900</pubDate>
+      
+      <guid>https://yukinooz.github.io/posts/2021/20211016_uol_enroll/</guid>
+      <description>概要 Coursera上の学士プログラム、ロンドン大学BSc CSに2021年10月より入学した。 会社は辞めないので、パートタイムで単位取得して</description>
+    </item>
+    
     <item>
       <title>golang deferの挙動</title>
       <link>https://yukinooz.github.io/posts/2021/20211015_go_defer/</link>
@@ -15,15 +24,6 @@
       
       <guid>https://yukinooz.github.io/posts/2021/20211015_go_defer/</guid>
       <description>defer A defer statement defers the execution of a function until the surrounding function returns. The deferred call&amp;rsquo;s arguments are evaluated immediately, but the function call is not executed until the surrounding function returns. A tour of go: defer 関数が終了する際に実行すべき処理を記述できる 遅延実行される関数</description>
-    </item>
-    
-    <item>
-      <title>ロンドン大学のCS オンライン学士に入学をした</title>
-      <link>https://yukinooz.github.io/posts/2021/20211016_uol_enroll/</link>
-      <pubDate>Fri, 15 Oct 2021 11:25:47 +0900</pubDate>
-      
-      <guid>https://yukinooz.github.io/posts/2021/20211016_uol_enroll/</guid>
-      <description>概要 Coursera上の学士プログラム、ロンドン大学BSc CSに2021年10月より入学した。 会社は辞めないので、パートタイムで単位取得して</description>
     </item>
     
   </channel>
