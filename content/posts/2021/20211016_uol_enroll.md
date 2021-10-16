@@ -1,12 +1,12 @@
 ---
 title: "ロンドン大学のCS オンライン学士に入学をした"
-date: 2021-10-15T11:25:47+09:00
+date: 2021-10-16T10:16:47+09:00
 draft: false
 toc: false
 images:
 tags:
-  - golang
-  - dev
+  - uol
+  - edu
 ---
 
 
