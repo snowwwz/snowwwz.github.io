@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright since 2020 Reona Shimada All Rights Reserved.</copyright>
-    <lastBuildDate>Fri, 15 Oct 2021 11:25:47 +0900</lastBuildDate><atom:link href="https://yukinooz.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Oct 2021 11:25:47 +0900</lastBuildDate><atom:link href="https://yukinooz.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>golang interfaceとは</title>
+      <link>https://yukinooz.github.io/posts/2021/20211017_go_interface/</link>
+      <pubDate>Sun, 17 Oct 2021 11:25:47 +0900</pubDate>
+      
+      <guid>https://yukinooz.github.io/posts/2021/20211017_go_interface/</guid>
+      <description>Interface 中身のない型 何でも入る型 func main() { var i interface{} i = 4 fmt.Println(i) //4 i = 3.5 fmt.Println(i) //3.5 i = &amp;#34;文字列&amp;#34; fmt.Println(i) //文字列 } 型変換 // (interfaceの変数).</description>
+    </item>
+    
     <item>
       <title>golang deferの挙動</title>
       <link>https://yukinooz.github.io/posts/2021/20211015_go_defer/</link>

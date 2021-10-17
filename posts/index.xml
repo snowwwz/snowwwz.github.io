@@ -6,8 +6,106 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>Copyright since 2020 Reona Shimada All Rights Reserved.</copyright>
-		<lastBuildDate>Sat, 16 Oct 2021 10:16:47 +0900</lastBuildDate>
+		<lastBuildDate>Sun, 17 Oct 2021 11:25:47 +0900</lastBuildDate>
 		<atom:link href="https://yukinooz.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>golang interfaceとは</title>
+			<link>https://yukinooz.github.io/posts/2021/20211017_go_interface/</link>
+			<pubDate>Sun, 17 Oct 2021 11:25:47 +0900</pubDate>
+			
+			<guid>https://yukinooz.github.io/posts/2021/20211017_go_interface/</guid>
+			<description>Interface 中身のない型 何でも入る型 func main() { var i interface{} i = 4 fmt.Println(i) //4 i = 3.5 fmt.Println(i) //3.5 i = &amp;#34;文字列&amp;#34; fmt.Println(i) //文字列 } 型変換 // (interfaceの変数).</description>
+			<content type="html"><![CDATA[<h1 id="interface">Interface</h1>
+<ul>
+<li>中身のない型</li>
+</ul>
+<h2 id="何でも入る型">何でも入る型</h2>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">i</span> <span class="kd">interface</span><span class="p">{}</span>
+	
+	<span class="nx">i</span> <span class="p">=</span> <span class="mi">4</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="c1">//4
+</span><span class="c1"></span>	
+	<span class="nx">i</span> <span class="p">=</span> <span class="mf">3.5</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="c1">//3.5
+</span><span class="c1"></span>	
+	<span class="nx">i</span> <span class="p">=</span> <span class="s">&#34;文字列&#34;</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="c1">//文字列
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><ul>
+<li>型変換</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// (interfaceの変数).(型名)
+</span><span class="c1"></span>
+<span class="nx">str</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">i</span><span class="p">.(</span><span class="kt">string</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;\n%s %T&#34;</span><span class="p">,</span> <span class="nx">str</span><span class="p">,</span> <span class="nx">str</span><span class="p">)</span> <span class="c1">// 文字列 string true
+</span></code></pre></div><ul>
+<li>switchで型判定できる</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">i</span> <span class="kd">interface</span><span class="p">{}</span>
+	
+	<span class="nx">i</span> <span class="p">=</span> <span class="mi">4</span>
+	<span class="nf">printType</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+	
+	<span class="nx">i</span> <span class="p">=</span> <span class="mf">3.5</span>
+	<span class="nf">printType</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+	
+	<span class="nx">i</span> <span class="p">=</span> <span class="s">&#34;文字列&#34;</span>
+	<span class="nf">printType</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+	
+	<span class="nx">i</span> <span class="p">=</span> <span class="kc">false</span>
+	<span class="nf">printType</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+
+
+<span class="kd">func</span> <span class="nf">printType</span><span class="p">(</span><span class="nx">i</span> <span class="kd">interface</span><span class="p">{})</span> <span class="p">{</span>
+	<span class="k">switch</span> <span class="nx">i</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="kt">int</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;int&#34;</span><span class="p">)</span>
+	<span class="k">case</span> <span class="kt">float64</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;float64&#34;</span><span class="p">)</span>
+	<span class="k">case</span> <span class="kt">string</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;string&#34;</span><span class="p">)</span>
+	<span class="k">default</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;other&#34;</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h2 id="関数をまとめる">関数をまとめる</h2>
+<ul>
+<li>関数群をメソッドにもつ構造体を代入できる、クラスの役割</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">Interface</span> <span class="kd">interface</span> <span class="p">{</span>
+	<span class="nf">add</span><span class="p">(</span><span class="nx">x</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">i</span> <span class="nx">Interface</span>
+	<span class="nx">i</span> <span class="p">=</span> <span class="nx">struct1</span><span class="p">{</span><span class="nx">value</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+	<span class="nx">i</span> <span class="p">=</span> <span class="nx">struct2</span><span class="p">{</span><span class="nx">value</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">struct1</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">value</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">struct2</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">value</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s1</span> <span class="nx">struct1</span><span class="p">)</span> <span class="nf">add</span><span class="p">(</span><span class="nx">x</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">s1</span><span class="p">.</span><span class="nx">value</span> <span class="o">+</span> <span class="nx">x</span>
+<span class="p">}</span>
+</code></pre></div><ul>
+<li>addメソッドはstruct1にしか実装していないため、Interface型のiにStruct2は代入できない</li>
+</ul>
+<blockquote>
+<p>cannot use struct2{&hellip;} (type struct2) as type Interface in assignment:
+struct2 does not implement Interface (missing add method)</p>
+</blockquote>
+]]></content>
+		</item>
 		
 		<item>
 			<title>ロンドン大学のCS オンライン学士に入学をした</title>
@@ -20,9 +118,9 @@
 <p>Coursera上の学士プログラム、ロンドン大学BSc CSに2021年10月より入学した。
 会社は辞めないので、パートタイムで単位取得していく社会人学生になった。</p>
 <h1 id="背景">背景</h1>
-<p>コンピューターサイエンスを学問として体系的に学びたかったこと。</p>
+<p>コンピューターサイエンスを学問として体系的に学びたかったのが理由。</p>
 <p>文系出身でエンジニアやってきて、自分の数学や情報学の学問的な素養が根本から欠如していることを痛感することは少なからずあったこと、全くの未知な分野にキャッチアップする際も、やはり学問的バックグラウンドを持っている人と比べると理解のスピードが違ったり、いつかちゃんと学びたいなとはずっと思っていた。</p>
-<p>3年目になりタイミング的にも、今腰を据えて自分の職業分野を学問として向き合ってみることにした。</p>
+<p>3年目になりタイミング的にも、今腰を据えて自分の職業を学問として向き合ってみることにした。</p>
 <h1 id="参考リンク">参考リンク</h1>
 <ul>
 <li><a href="https://london.ac.uk/courses/computer-science">公式</a></li>
@@ -32,8 +130,7 @@
 <li><a href="https://github.com/world-class/REPL">github REPL</a></li>
 </ul>
 <h1 id="今後">今後</h1>
-<p>高校卒業から5年経過し数学の成績が証明できなかったのもあり、最初の学期は2科目固定で成績上位になる必要があるみたい。
-完走できるか不安多いけど、まずは1学期いい成績残して正式入学を目指します~~</p>
+<p>高校卒業から5年経過し数学の成績が証明できず、最初の学期は2科目固定で成績上位になる必要があるみたいなので、まずは正式入学できるよう今後5ヶ月頑張る。</p>
 ]]></content>
 		</item>
 		
