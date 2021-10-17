@@ -86,23 +86,24 @@ type Interface interface {
 
 func main() {
 	var i Interface
-	i = Struct1{value: 1}
-	i = Struct2{value: 2}
+	i = struct1{value: 1}
+	i = struct2{value: 2}
 }
 
-type Struct1 struct {
+type struct1 struct {
 	value int
 }
 
-type Struct2 struct {
+type struct2 struct {
 	value int
 }
 
-func (s1 Struct1) add(x int) int {
+func (s1 struct1) add(x int) int {
 	return s1.value + x
 }
 ```
 
 - addメソッドはstruct1にしか実装していないため、Interface型のiにStruct2は代入できない
 
-> cannot use Struct2{...} (type Struct2) as type Interface in assignment:　Struct2 does not implement Interface (missing adder method)
+> cannot use struct2{...} (type struct2) as type Interface in assignment:
+	struct2 does not implement Interface (missing add method)
