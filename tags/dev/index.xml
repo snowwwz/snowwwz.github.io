@@ -35,5 +35,14 @@
       <description>defer A defer statement defers the execution of a function until the surrounding function returns. The deferred call&amp;rsquo;s arguments are evaluated immediately, but the function call is not executed until the surrounding function returns. A tour of go: defer 関数が終了する際に実行すべき処理を記述できる 遅延実行される関数</description>
     </item>
     
+    <item>
+      <title>メモリの仕組みの理解はプログラマの嗜み</title>
+      <link>https://yukinooz.github.io/posts/2019/20191028_oop_memory/</link>
+      <pubDate>Mon, 28 Oct 2019 10:20:00 +0900</pubDate>
+      
+      <guid>https://yukinooz.github.io/posts/2019/20191028_oop_memory/</guid>
+      <description>オブジェクト指向でなぜ作るのか 「オブジェクト指向でなぜ作るのか」の第５章「メモリの仕組みの理解はプログラマのたしなみ」を読んだので、メモ。 一</description>
+    </item>
+    
   </channel>
 </rss>
