@@ -13,7 +13,7 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
 disqusShortname = "yukinooz-github-io"
 
 [author]
-  name = "@yukinoo"
+  name = "@yukinooz"
 
 [blackfriday]
   # hrefTargetBlank = true
