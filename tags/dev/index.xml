@@ -36,6 +36,15 @@
     </item>
     
     <item>
+      <title>Jenkins導入とNginxでリバースプロキシ設定</title>
+      <link>https://yukinooz.github.io/posts/2019/20191108_jenkins_nginx/</link>
+      <pubDate>Fri, 08 Nov 2019 10:20:00 +0900</pubDate>
+      
+      <guid>https://yukinooz.github.io/posts/2019/20191108_jenkins_nginx/</guid>
+      <description>業務でCIツールとしてJenkinsを入れることになったので、その時の記録。 jenkinsの説明は、Jenkinsとはなんぞや？​が簡潔でわ</description>
+    </item>
+    
+    <item>
       <title>メモリの仕組みの理解はプログラマの嗜み</title>
       <link>https://yukinooz.github.io/posts/2019/20191028_oop_memory/</link>
       <pubDate>Mon, 28 Oct 2019 10:20:00 +0900</pubDate>

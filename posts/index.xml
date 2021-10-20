@@ -365,6 +365,130 @@ The deferred call&rsquo;s arguments are evaluated immediately, but the function 
 		</item>
 		
 		<item>
+			<title>Jenkins導入とNginxでリバースプロキシ設定</title>
+			<link>https://yukinooz.github.io/posts/2019/20191108_jenkins_nginx/</link>
+			<pubDate>Fri, 08 Nov 2019 10:20:00 +0900</pubDate>
+			
+			<guid>https://yukinooz.github.io/posts/2019/20191108_jenkins_nginx/</guid>
+			<description>業務でCIツールとしてJenkinsを入れることになったので、その時の記録。 jenkinsの説明は、Jenkinsとはなんぞや？​が簡潔でわ</description>
+			<content type="html"><![CDATA[<p>業務でCIツールとしてJenkinsを入れることになったので、その時の記録。
+jenkinsの説明は、<a href="https://qiita.com/ko8@github/items/e6e058976d48d3fc3424">Jenkinsとはなんぞや？</a>​が簡潔でわかりやすかった。</p>
+<h2 id="バージョン">バージョン</h2>
+<ul>
+<li>nginx 1.16.1</li>
+<li>centOS 7.6.1810</li>
+<li>Jenkins 2.190.3</li>
+</ul>
+<h1 id="jenkins導入方法">Jenkins導入方法</h1>
+<p><strong>(1) install Java</strong>
+Jenkinsはjavaで実装されており、javaの実行環境が必要があるためない場合はインストールする。</p>
+<pre><code># openJDK
+yum install java-1.8.0-openjdk
+</code></pre><p><strong>(2) install Jenkins</strong></p>
+<p><a href="http://pkg.jenkins-ci.org/redhat-stable/">公式</a>の手順。</p>
+<pre><code># jenkinsのyumリポジトリを取得
+wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+
+# 公開鍵追加
+rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+
+# インストール
+yum install jenkins
+</code></pre><p><strong>(3) 各種設定</strong>
+設定ファイル： <code>/etc/sysconfig/jenkins</code>
+各種設定はこのファイルで変更することができる。以下は、デフォルトの値。</p>
+<pre><code># ポート
+JENKINS_PORT=“8080&quot;
+​
+# 実行ユーザ
+JENKINS_USER=&quot;jenkins&quot;
+</code></pre><p>実行ユーザーの変更を行った場合以下のディレクトリ/ファイルの権限も同様に変更する必要がある。</p>
+<ul>
+<li><code>/var/lib/jenkins</code></li>
+<li><code>/var/log/jenkins</code></li>
+<li><code>/var/cache/jenkins</code></li>
+</ul>
+<p><strong>(4) 起動</strong></p>
+<pre><code># 起動
+systemctl start jenkins
+
+# 再起動
+systemctl restart jenkins
+
+# 終了
+systemctl stop jenkins
+
+# 確認
+systemctl status jenkins
+</code></pre><p>起動して、statusがrunningになったら、<code>http://{IP}:{PORT}</code>で接続できる。外部からの接続が遮断されている場合は、解放することを忘れずに。</p>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Installing+Jenkins+on+Red+Hat+distributions">firewall設定 counfigure firewall 参照</a></p>
+<h1 id="nginxでリバースプロキシ設定">Nginxでリバースプロキシ設定</h1>
+<p>リバースプロキシとは受け取ったリクエストを転送する機能で、ロードバランスや、リクエストの書き換え、アクセス制限などに使われてる。
+​
+今回、毎回ポート番号指定する代わりに、<code>http://{IP}/jenkins</code>で接続できるように以下の設定を行った。
+​
+<img src="/jenkins_nginx.png" alt="jenkins_nginx"></p>
+<p><strong>(1) jenkins側の設定</strong></p>
+<p>設定ファイル(<code>/etc/sysconfig/jenkin</code>）を以下のように書き換える。</p>
+<pre><code>JENKINS_ARGS=&quot;--prefix=/jenkins&quot;
+</code></pre><p><strong>(2) Nginx側の設定</strong></p>
+<ul>
+<li>共通設定：<code>/etc/nginx/nginx.conf</code></li>
+<li>serverブロックごとの設定：<code>/etc/nginx/conf.d/</code></li>
+<li>デフォルトのlistenポート80番の設定：<code>/etc/nginx/conf.d/default.conf</code>
+​</li>
+</ul>
+<p><code>/etc/nginx/conf.d/default.conf</code>で80番ポートをlistenしているserverディレクティブ内に以下を追記。nginxを経由することで、リクエスト情報が変わるので、headerをここでセットしてあげる必要がある。</p>
+<pre><code>location ~ /jenkins {
+    proxy_redirect     off;
+    proxy_set_header   Host $host;
+    proxy_set_header   X-Forwarded-Proto $scheme;
+    proxy_set_header   X-Real-IP         $remote_addr;
+    proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
+    proxy_pass         http://jenkins;
+}
+</code></pre><ul>
+<li>変数 （$がつくものはnginxの組み込み変数。）
+<ul>
+<li><code>$scheme</code>：リクエストされたスキーマ（http、https）</li>
+<li><code>$http_host</code>：ポート番号付きホスト</li>
+<li><code>$remote_addr</code>：アクセス元のIPアドレス</li>
+<li><code>$proxy_add_x_forwarded_for</code>：ユーザーが経由したアドレス</li>
+<li><code>$host</code>：マッチした、サーバ名/Hostヘッダの値。</li>
+</ul>
+</li>
+<li>ディレクティブ
+<ul>
+<li><code>proxy_set_header ヘッダーフィールド名　値</code>：リクエストをプロキシする際に特定のヘッダ情報を付与する。</li>
+<li><code>proxy_pass 転送先</code>：転送先URL。
+​
+nginxで使える変数や、ディレクティブの一覧は<a href="http://nginx.org/en/docs/http/ngx_http_core_module.html">ここ</a>や<a href="http://www2.matsue-ct.ac.jp/home/kanayama/text/nginx/all.html">ここ</a>が参考になった。
+​</li>
+</ul>
+</li>
+</ul>
+<p><code>/etc/nginx/conf.d/jenkins.conf</code>を作成し、以下を記載。<code>127.0.0.1</code> は、ループバック・アドレス（自分自身を指すIPアドレス）のこと。default.confの<code>proxy_pass         http://jenkins;</code>のjenkinsをここで定義。</p>
+<pre><code>upstream jenkins {
+　　server 127.0.0.1:8080 fail_timeout=0;
+}
+</code></pre><p><strong>(3) 再起動</strong></p>
+<pre><code># jenkins再起動
+systemctl restart jenkins
+
+# nginx再起動
+systemctl restart nginx
+</code></pre><p><code>http://{IP}/jenkins</code>にアクセスして、jenkinsが無事に表示されたら完了。</p>
+<p>jenkinsで<code>&quot;リバースプロキシの設定がおかしいようです&quot;</code>のエラーが出てたが、jenkinsの管理→システムの設定→JenkinsのURLを変更すると消えた。</p>
+<h1 id="参考">参考</h1>
+<ul>
+<li>nginx実践入門</li>
+<li><a href="https://christina04.hatenablog.com/entry/2016/10/25/190000">https://christina04.hatenablog.com/entry/2016/10/25/190000</a></li>
+<li><a href="https://wiki.jenkins.io/display/JENKINS/Jenkins+behind+an+NGinX+reverse+proxy">https://wiki.jenkins.io/display/JENKINS/Jenkins+behind+an+NGinX+reverse+proxy</a></li>
+</ul>
+]]></content>
+		</item>
+		
+		<item>
 			<title>メモリの仕組みの理解はプログラマの嗜み</title>
 			<link>https://yukinooz.github.io/posts/2019/20191028_oop_memory/</link>
 			<pubDate>Mon, 28 Oct 2019 10:20:00 +0900</pubDate>
