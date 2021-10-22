@@ -1,6 +1,6 @@
 ---
 title: "golang interfaceとは"
-date: 2021-10-17T11:25:47+09:00
+date: 2021-05-27T11:25:47+09:00
 draft: false
 toc: false
 images:
