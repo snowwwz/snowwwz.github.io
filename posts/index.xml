@@ -6,178 +6,8 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>Copyright since 2020 Reona Shimada All Rights Reserved.</copyright>
-		<lastBuildDate>Mon, 18 Oct 2021 22:15:47 +0900</lastBuildDate>
+		<lastBuildDate>Sat, 16 Oct 2021 10:16:47 +0900</lastBuildDate>
 		<atom:link href="https://yukinooz.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
-		
-		<item>
-			<title>golang append()のメモリ割り当て</title>
-			<link>https://yukinooz.github.io/posts/2021/20211018_go_memory/</link>
-			<pubDate>Mon, 18 Oct 2021 22:15:47 +0900</pubDate>
-			
-			<guid>https://yukinooz.github.io/posts/2021/20211018_go_memory/</guid>
-			<description>makeのcapacityは確保するメモリの効率化のためスライスのMAXの長さを指す。 capacityを超えた場合、要素数 × 2 の容量が確保さ</description>
-			<content type="html"><![CDATA[<ul>
-<li>makeのcapacityは確保するメモリの効率化のためスライスのMAXの長さを指す。</li>
-<li>capacityを超えた場合、要素数 × 2 の容量が確保され無駄なメモリ領域が使われる。</li>
-</ul>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="nx">slice</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;len=%v, cap=%v\n&#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">slice</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">slice</span><span class="p">))</span>
-
-	<span class="nx">slice</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">slice</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;len=%v, cap=%v\n&#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">slice</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">slice</span><span class="p">))</span>
-<span class="p">}</span>
-
-<span class="c1">// len=10, cap=10
-</span><span class="c1">// len=11, cap=20
-</span></code></pre></div><ul>
-<li>必要なメモリをあらかじめ確保した場合としなかった場合を比較してみた。</li>
-</ul>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&#34;testing&#34;</span>
-
-<span class="kd">const</span> <span class="nx">SIZE</span> <span class="p">=</span> <span class="mi">1000</span>
-
-<span class="kd">func</span> <span class="nf">BenchmarkAllocated</span><span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">B</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">N</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-		<span class="nx">s</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">SIZE</span><span class="p">)</span>
-		<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">SIZE</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-			<span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">BenchmarkNotAllocated</span><span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">B</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">N</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-		<span class="nx">s</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{}</span>
-		<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">SIZE</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-			<span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><ul>
-<li><code>-benchmem</code>オプションでメモリ情報表示
-<ul>
-<li>読み方-&gt; <a href="https://pkg.go.dev/testing#BenchmarkResult">https://pkg.go.dev/testing#BenchmarkResult</a></li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>-benchmem
-Print memory allocation statistics for benchmarks.</p>
-</blockquote>
-<pre><code>$ go test memory_test.go -bench . -benchmem
-goos: darwin
-goarch: amd64
-cpu: Intel(R) Core(TM) i5-8279U CPU @ 2.40GHz
-BenchmarkAllocated-8               99382             12088 ns/op           81920 B/op          1 allocs/op
-BenchmarkNotAllocated-8            24846             47484 ns/op          386297 B/op         20 allocs/op
-PASS
-ok      command-line-arguments  3.245s
-</code></pre><ul>
-<li>cap指定せずに<code>append()</code>するのは非効率。</li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>golang interfaceとは</title>
-			<link>https://yukinooz.github.io/posts/2021/20211017_go_interface/</link>
-			<pubDate>Sun, 17 Oct 2021 11:25:47 +0900</pubDate>
-			
-			<guid>https://yukinooz.github.io/posts/2021/20211017_go_interface/</guid>
-			<description>Interface 中身のない型 何でも入る型 func main() { var i interface{} i = 4 fmt.Println(i) //4 i = 3.5 fmt.Println(i) //3.5 i = &amp;#34;文字列&amp;#34; fmt.Println(i) //文字列 } 型変換 // (interfaceの変数).</description>
-			<content type="html"><![CDATA[<h1 id="interface">Interface</h1>
-<ul>
-<li>中身のない型</li>
-</ul>
-<h2 id="何でも入る型">何でも入る型</h2>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">i</span> <span class="kd">interface</span><span class="p">{}</span>
-	
-	<span class="nx">i</span> <span class="p">=</span> <span class="mi">4</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="c1">//4
-</span><span class="c1"></span>	
-	<span class="nx">i</span> <span class="p">=</span> <span class="mf">3.5</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="c1">//3.5
-</span><span class="c1"></span>	
-	<span class="nx">i</span> <span class="p">=</span> <span class="s">&#34;文字列&#34;</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="c1">//文字列
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></div><ul>
-<li>型変換</li>
-</ul>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// (interfaceの変数).(型名)
-</span><span class="c1"></span>
-<span class="nx">str</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">i</span><span class="p">.(</span><span class="kt">string</span><span class="p">)</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;\n%s %T&#34;</span><span class="p">,</span> <span class="nx">str</span><span class="p">,</span> <span class="nx">str</span><span class="p">)</span> <span class="c1">// 文字列 string true
-</span></code></pre></div><ul>
-<li>switchで型判定できる</li>
-</ul>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">i</span> <span class="kd">interface</span><span class="p">{}</span>
-	
-	<span class="nx">i</span> <span class="p">=</span> <span class="mi">4</span>
-	<span class="nf">printType</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-	
-	<span class="nx">i</span> <span class="p">=</span> <span class="mf">3.5</span>
-	<span class="nf">printType</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-	
-	<span class="nx">i</span> <span class="p">=</span> <span class="s">&#34;文字列&#34;</span>
-	<span class="nf">printType</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-	
-	<span class="nx">i</span> <span class="p">=</span> <span class="kc">false</span>
-	<span class="nf">printType</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-<span class="p">}</span>
-
-
-<span class="kd">func</span> <span class="nf">printType</span><span class="p">(</span><span class="nx">i</span> <span class="kd">interface</span><span class="p">{})</span> <span class="p">{</span>
-	<span class="k">switch</span> <span class="nx">i</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">case</span> <span class="kt">int</span><span class="p">:</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;int&#34;</span><span class="p">)</span>
-	<span class="k">case</span> <span class="kt">float64</span><span class="p">:</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;float64&#34;</span><span class="p">)</span>
-	<span class="k">case</span> <span class="kt">string</span><span class="p">:</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;string&#34;</span><span class="p">)</span>
-	<span class="k">default</span><span class="p">:</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;other&#34;</span><span class="p">)</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><h2 id="関数をまとめる">関数をまとめる</h2>
-<ul>
-<li>関数群をメソッドにもつ構造体を代入できる、クラスの役割</li>
-</ul>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">Interface</span> <span class="kd">interface</span> <span class="p">{</span>
-	<span class="nf">add</span><span class="p">(</span><span class="nx">x</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">i</span> <span class="nx">Interface</span>
-	<span class="nx">i</span> <span class="p">=</span> <span class="nx">struct1</span><span class="p">{</span><span class="nx">value</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
-	<span class="nx">i</span> <span class="p">=</span> <span class="nx">struct2</span><span class="p">{</span><span class="nx">value</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">type</span> <span class="nx">struct1</span> <span class="kd">struct</span> <span class="p">{</span>
-	<span class="nx">value</span> <span class="kt">int</span>
-<span class="p">}</span>
-
-<span class="kd">type</span> <span class="nx">struct2</span> <span class="kd">struct</span> <span class="p">{</span>
-	<span class="nx">value</span> <span class="kt">int</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="p">(</span><span class="nx">s1</span> <span class="nx">struct1</span><span class="p">)</span> <span class="nf">add</span><span class="p">(</span><span class="nx">x</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-	<span class="k">return</span> <span class="nx">s1</span><span class="p">.</span><span class="nx">value</span> <span class="o">+</span> <span class="nx">x</span>
-<span class="p">}</span>
-</code></pre></div><ul>
-<li>addメソッドはstruct1にしか実装していないため、Interface型のiにStruct2は代入できない</li>
-</ul>
-<blockquote>
-<p>cannot use struct2{&hellip;} (type struct2) as type Interface in assignment:
-struct2 does not implement Interface (missing add method)</p>
-</blockquote>
-]]></content>
-		</item>
 		
 		<item>
 			<title>ロンドン大学のCS オンライン学士に入学をした</title>
@@ -362,6 +192,176 @@ The deferred call&rsquo;s arguments are evaluated immediately, but the function 
 <span class="c1">// =&gt; yyyyy
 </span><span class="c1">//    XXXXX
 </span></code></pre></div>]]></content>
+		</item>
+		
+		<item>
+			<title>golang append()のメモリ割り当て</title>
+			<link>https://yukinooz.github.io/posts/2021/20210527_go_memory/</link>
+			<pubDate>Thu, 27 May 2021 22:15:47 +0900</pubDate>
+			
+			<guid>https://yukinooz.github.io/posts/2021/20210527_go_memory/</guid>
+			<description>makeのcapacityは確保するメモリの効率化のためスライスのMAXの長さを指す。 capacityを超えた場合、要素数 × 2 の容量が確保さ</description>
+			<content type="html"><![CDATA[<ul>
+<li>makeのcapacityは確保するメモリの効率化のためスライスのMAXの長さを指す。</li>
+<li>capacityを超えた場合、要素数 × 2 の容量が確保され無駄なメモリ領域が使われる。</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">slice</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;len=%v, cap=%v\n&#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">slice</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">slice</span><span class="p">))</span>
+
+	<span class="nx">slice</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">slice</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;len=%v, cap=%v\n&#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">slice</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">slice</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="c1">// len=10, cap=10
+</span><span class="c1">// len=11, cap=20
+</span></code></pre></div><ul>
+<li>必要なメモリをあらかじめ確保した場合としなかった場合を比較してみた。</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&#34;testing&#34;</span>
+
+<span class="kd">const</span> <span class="nx">SIZE</span> <span class="p">=</span> <span class="mi">1000</span>
+
+<span class="kd">func</span> <span class="nf">BenchmarkAllocated</span><span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">B</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">N</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="nx">s</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">SIZE</span><span class="p">)</span>
+		<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">SIZE</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+			<span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">BenchmarkNotAllocated</span><span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">B</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">N</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="nx">s</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{}</span>
+		<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">SIZE</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+			<span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><ul>
+<li><code>-benchmem</code>オプションでメモリ情報表示
+<ul>
+<li>読み方-&gt; <a href="https://pkg.go.dev/testing#BenchmarkResult">https://pkg.go.dev/testing#BenchmarkResult</a></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>-benchmem
+Print memory allocation statistics for benchmarks.</p>
+</blockquote>
+<pre><code>$ go test memory_test.go -bench . -benchmem
+goos: darwin
+goarch: amd64
+cpu: Intel(R) Core(TM) i5-8279U CPU @ 2.40GHz
+BenchmarkAllocated-8               99382             12088 ns/op           81920 B/op          1 allocs/op
+BenchmarkNotAllocated-8            24846             47484 ns/op          386297 B/op         20 allocs/op
+PASS
+ok      command-line-arguments  3.245s
+</code></pre><ul>
+<li>cap指定せずに<code>append()</code>するのは非効率。</li>
+</ul>
+]]></content>
+		</item>
+		
+		<item>
+			<title>golang interfaceとは</title>
+			<link>https://yukinooz.github.io/posts/2021/20210527_go_interface/</link>
+			<pubDate>Thu, 27 May 2021 11:25:47 +0900</pubDate>
+			
+			<guid>https://yukinooz.github.io/posts/2021/20210527_go_interface/</guid>
+			<description>Interface 中身のない型 何でも入る型 func main() { var i interface{} i = 4 fmt.Println(i) //4 i = 3.5 fmt.Println(i) //3.5 i = &amp;#34;文字列&amp;#34; fmt.Println(i) //文字列 } 型変換 // (interfaceの変数).</description>
+			<content type="html"><![CDATA[<h1 id="interface">Interface</h1>
+<ul>
+<li>中身のない型</li>
+</ul>
+<h2 id="何でも入る型">何でも入る型</h2>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">i</span> <span class="kd">interface</span><span class="p">{}</span>
+	
+	<span class="nx">i</span> <span class="p">=</span> <span class="mi">4</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="c1">//4
+</span><span class="c1"></span>	
+	<span class="nx">i</span> <span class="p">=</span> <span class="mf">3.5</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="c1">//3.5
+</span><span class="c1"></span>	
+	<span class="nx">i</span> <span class="p">=</span> <span class="s">&#34;文字列&#34;</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="c1">//文字列
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><ul>
+<li>型変換</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// (interfaceの変数).(型名)
+</span><span class="c1"></span>
+<span class="nx">str</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">i</span><span class="p">.(</span><span class="kt">string</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;\n%s %T&#34;</span><span class="p">,</span> <span class="nx">str</span><span class="p">,</span> <span class="nx">str</span><span class="p">)</span> <span class="c1">// 文字列 string true
+</span></code></pre></div><ul>
+<li>switchで型判定できる</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">i</span> <span class="kd">interface</span><span class="p">{}</span>
+	
+	<span class="nx">i</span> <span class="p">=</span> <span class="mi">4</span>
+	<span class="nf">printType</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+	
+	<span class="nx">i</span> <span class="p">=</span> <span class="mf">3.5</span>
+	<span class="nf">printType</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+	
+	<span class="nx">i</span> <span class="p">=</span> <span class="s">&#34;文字列&#34;</span>
+	<span class="nf">printType</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+	
+	<span class="nx">i</span> <span class="p">=</span> <span class="kc">false</span>
+	<span class="nf">printType</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+
+
+<span class="kd">func</span> <span class="nf">printType</span><span class="p">(</span><span class="nx">i</span> <span class="kd">interface</span><span class="p">{})</span> <span class="p">{</span>
+	<span class="k">switch</span> <span class="nx">i</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="kt">int</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;int&#34;</span><span class="p">)</span>
+	<span class="k">case</span> <span class="kt">float64</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;float64&#34;</span><span class="p">)</span>
+	<span class="k">case</span> <span class="kt">string</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;string&#34;</span><span class="p">)</span>
+	<span class="k">default</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;other&#34;</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h2 id="関数をまとめる">関数をまとめる</h2>
+<ul>
+<li>関数群をメソッドにもつ構造体を代入できる、クラスの役割</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">Interface</span> <span class="kd">interface</span> <span class="p">{</span>
+	<span class="nf">add</span><span class="p">(</span><span class="nx">x</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">i</span> <span class="nx">Interface</span>
+	<span class="nx">i</span> <span class="p">=</span> <span class="nx">struct1</span><span class="p">{</span><span class="nx">value</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+	<span class="nx">i</span> <span class="p">=</span> <span class="nx">struct2</span><span class="p">{</span><span class="nx">value</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">struct1</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">value</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">struct2</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">value</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s1</span> <span class="nx">struct1</span><span class="p">)</span> <span class="nf">add</span><span class="p">(</span><span class="nx">x</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">s1</span><span class="p">.</span><span class="nx">value</span> <span class="o">+</span> <span class="nx">x</span>
+<span class="p">}</span>
+</code></pre></div><ul>
+<li>addメソッドはstruct1にしか実装していないため、Interface型のiにStruct2は代入できない</li>
+</ul>
+<blockquote>
+<p>cannot use struct2{&hellip;} (type struct2) as type Interface in assignment:
+struct2 does not implement Interface (missing add method)</p>
+</blockquote>
+]]></content>
 		</item>
 		
 		<item>
