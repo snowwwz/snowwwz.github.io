@@ -7,14 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright since 2020 Reona Shimada All Rights Reserved.</copyright>
-    <lastBuildDate>Fri, 15 Oct 2021 11:25:47 +0900</lastBuildDate><atom:link href="https://yukinooz.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 03 Jun 2021 11:25:47 +0900</lastBuildDate><atom:link href="https://yukinooz.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>golang deferの挙動</title>
-      <link>https://yukinooz.github.io/posts/2021/20211015_go_defer/</link>
-      <pubDate>Fri, 15 Oct 2021 11:25:47 +0900</pubDate>
+      <title>goroutine</title>
+      <link>https://yukinooz.github.io/posts/2021/20210603_goroutine/</link>
+      <pubDate>Thu, 03 Jun 2021 11:25:47 +0900</pubDate>
       
-      <guid>https://yukinooz.github.io/posts/2021/20211015_go_defer/</guid>
-      <description>defer A defer statement defers the execution of a function until the surrounding function returns. The deferred call&amp;rsquo;s arguments are evaluated immediately, but the function call is not executed until the surrounding function returns. A tour of go: defer 関数が終了する際に実行すべき処理を記述できる 遅延実行される関数</description>
+      <guid>https://yukinooz.github.io/posts/2021/20210603_goroutine/</guid>
+      <description>Goroutine A goroutine is a lightweight thread managed by the Go runtime. A tour of go: goroutinne 引数の評価は既存のgoroutineで行い、実行だけ別のgoroutineを使用して行う。 go f(x, y, z) Channel Channels are a</description>
     </item>
     
     <item>
@@ -33,6 +33,15 @@
       
       <guid>https://yukinooz.github.io/posts/2021/20210527_go_interface/</guid>
       <description>Interface 中身のない型 何でも入る型 func main() { var i interface{} i = 4 fmt.Println(i) //4 i = 3.5 fmt.Println(i) //3.5 i = &amp;#34;文字列&amp;#34; fmt.Println(i) //文字列 } 型変換 // (interfaceの変数).</description>
+    </item>
+    
+    <item>
+      <title>golang deferの挙動</title>
+      <link>https://yukinooz.github.io/posts/2020/20201120_go_defer/</link>
+      <pubDate>Fri, 20 Nov 2020 13:15:47 +0900</pubDate>
+      
+      <guid>https://yukinooz.github.io/posts/2020/20201120_go_defer/</guid>
+      <description>defer A defer statement defers the execution of a function until the surrounding function returns. The deferred call&amp;rsquo;s arguments are evaluated immediately, but the function call is not executed until the surrounding function returns. A tour of go: defer 関数が終了する際に実行すべき処理を記述できる 遅延実行される関数</description>
     </item>
     
   </channel>
