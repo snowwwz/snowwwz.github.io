@@ -195,6 +195,39 @@ The deferred call&rsquo;s arguments are evaluated immediately, but the function 
 		</item>
 		
 		<item>
+			<title>Learning How to Learn</title>
+			<link>https://yukinooz.github.io/posts/2021/20210910_learn_how_to_learn/</link>
+			<pubDate>Fri, 10 Sep 2021 10:20:00 +0900</pubDate>
+			
+			<guid>https://yukinooz.github.io/posts/2021/20210910_learn_how_to_learn/</guid>
+			<description>Learning How to Learn: Powerful mental tools to help you master tough subjects tips Keep a planner journal quitting timeも書いておく Commit yourself to certain routines and tasks each day Delay rewards until you finish the task Watch out for procrastination cues Gain trust in your new system Have backup plans for when you still procrastinate Eat your frogs first todoist Eat</description>
+			<content type="html"><![CDATA[<p><a href="https://www.coursera.org/learn/learning-how-to-learn">Learning How to Learn: Powerful mental tools to help you master tough subjects</a></p>
+<h2 id="tips">tips</h2>
+<ul>
+<li>Keep a planner journal
+<ul>
+<li>quitting timeも書いておく</li>
+</ul>
+</li>
+<li>Commit yourself to certain routines and tasks each day</li>
+<li>Delay rewards until you finish the task</li>
+<li>Watch out for procrastination cues</li>
+<li>Gain trust in your new system</li>
+<li>Have backup plans for when you still procrastinate</li>
+<li>Eat your frogs first</li>
+</ul>
+<p><a href="https://todoist.com/productivity-methods/eat-the-frog">todoist Eat The Frog</a>
+<a href="https://todoist.com/ja/productivity-methods/pomodoro-technique">todoist Pomodoro Technique</a></p>
+<h2 id="product--process">Product &lt; Process</h2>
+<p>&ldquo;タスク/プロダクト&quot;そのものではなく、その&quot;プロセス&quot;に着目すべき
+習慣により関係するプロセスに着目することで、やりたくないタスクも終えることができる</p>
+<blockquote>
+<p>process means the flow of time and the habits and actions associated with that flow of time as in Im going to spend twenty minutes working</p>
+</blockquote>
+]]></content>
+		</item>
+		
+		<item>
 			<title>golang append()のメモリ割り当て</title>
 			<link>https://yukinooz.github.io/posts/2021/20210527_go_memory/</link>
 			<pubDate>Thu, 27 May 2021 22:15:47 +0900</pubDate>
