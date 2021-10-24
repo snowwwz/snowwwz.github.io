@@ -875,9 +875,9 @@ systemctl restart nginx
 		</item>
 		
 		<item>
-			<title></title>
+			<title>【まつもとゆきひろ氏　特別講演】若手エンジニアの生存戦略</title>
 			<link>https://yukinooz.github.io/posts/2018/20180623/</link>
-			<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+			<pubDate>Sun, 24 Jun 2018 10:15:47 +0900</pubDate>
 			
 			<guid>https://yukinooz.github.io/posts/2018/20180623/</guid>
 			<description>まつもとゆきひろさん（Matz） 通称は英語圏では覚えてくれないから rubyを作った人 IT業界で最も影響力のある100人に日本人ひとり選ばれた</description>
@@ -891,7 +891,7 @@ systemctl restart nginx
 <li>ThinkPadを使用</li>
 <li>政府IT総合戦略本部委員</li>
 </ul>
-<p>##生存戦略</p>
+<h2 id="生存戦略">生存戦略</h2>
 <ul>
 <li>「死なないこと」</li>
 <li>エンジニアは他の職種より給料高めだが残業が常識、残業時間の自慢になったり</li>
