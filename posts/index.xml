@@ -924,13 +924,24 @@ ex) アプリ ＜ 言語 ＜ OS
 </ul>
 <h2 id="まつもとさんの経歴からのパターン抽出">まつもとさんの経歴からのパターン抽出</h2>
 <p><strong>鶏口牛後</strong></p>
-<p>鶏のチームの最初にいるほうが牛の列の1番後ろよりいい。まつもとさんの場合新卒で入社した会社同期200人いてCS出身は６人だけだったため、ライバル少なく優遇された。みんなの真似することあまりいいことおきない。</p>
+<ul>
+<li>鶏のチームの最初にいるほうが牛の列の1番後ろよりいい。</li>
+<li>まつもとさんの場合新卒で入社した会社同期200人いてCS出身は６人だけだったため、ライバル少なく優遇された。</li>
+<li>みんなの真似することあまりいいことおきない。</li>
+</ul>
 <p><strong>我慢の価値</strong></p>
-<p>日本語で「頑張って」英語では「hang in there」たえつづける？がまんして？の意味を持っている。社会的圧力が蔓延しているけれど「みんながやっているから」は我慢の理由にならないし、理不尽に耐える必要はない。同じ我慢でも「目的」のある我慢をするべき。  労働は我慢ではないこと、また報酬は価値の対価であること。</p>
-<p><strong>プログラマー三代美徳</strong>
-怠惰 ：全体の労力をへらすために手間を惜しまない。最も重要。
-短期 ：コムピューターが傲慢なときに感じる怒り。
-傲慢 ：人様に出しても恥ずかしくないプログラムを</p>
+<ul>
+<li>日本語で「頑張って」英語では「hang in there」たえつづける？がまんして？の意味を持っている。</li>
+<li>社会的圧力が蔓延しているけれど「みんながやっているから」は我慢の理由にならないし、理不尽に耐える必要はない。</li>
+<li>同じ我慢でも「目的」のある我慢をするべき。  </li>
+<li>労働は我慢ではないこと、また報酬は価値の対価であること。</li>
+</ul>
+<p><strong>プログラマー三代美徳</strong></p>
+<ul>
+<li>怠惰 ：全体の労力をへらすために手間を惜しまない。最も重要。</li>
+<li>短期 ：コムピューターが傲慢なときに感じる怒り。</li>
+<li>傲慢 ：人様に出しても恥ずかしくないプログラムを</li>
+</ul>
 <p><strong>ポジティブ思考</strong></p>
 <ul>
 <li>みんながやらないけれどやってもいいこと</li>
@@ -971,10 +982,10 @@ ex) アプリ ＜ 言語 ＜ OS
 <li>人芸の可塑性にかける</li>
 </ul>
 <h2 id="おすすめ">おすすめ</h2>
-<p><a href="https://books.rakuten.co.jp/rb/15511226/">https://books.rakuten.co.jp/rb/15511226/</a>
- </p>
-<p><a href="https://books.rakuten.co.jp/rb/12453629/?scid=we_lnk_ad_all_non_pla_201803&amp;rmatt=tsid:1045894%7Ccid:1066793895%7Cagid:52675710392%7Ctid:pla-296633477513%7Ccrid:253024896388%7Cnw:g%7Crnd:6932928539230139432%7Cdvc:c%7Cadp:1o3%7Cmt:%7Cloc:1009301&amp;gclid=Cj0KCQjw37fZBRD3ARIsAJihSr1y8Z_KSTuDAQtbe9q1CrtpGX2Q2dz3dgCuMctL0x3lqMY1VrrT35waAspdEALw_wcB">https://books.rakuten.co.jp/rb/12453629/?scid=we_lnk_ad_all_non_pla_201803&amp;rmatt=tsid:1045894%7Ccid:1066793895%7Cagid:52675710392%7Ctid:pla-296633477513%7Ccrid:253024896388%7Cnw:g%7Crnd:6932928539230139432%7Cdvc:c%7Cadp:1o3%7Cmt:%7Cloc:1009301&amp;gclid=Cj0KCQjw37fZBRD3ARIsAJihSr1y8Z_KSTuDAQtbe9q1CrtpGX2Q2dz3dgCuMctL0x3lqMY1VrrT35waAspdEALw_wcB</a>
-togetter.com</p>
+<ul>
+<li>「CAREER SKILLS　ソフトウェア開発者の完全キャリアガイド」</li>
+<li>「完訳7つの習慣　人格主義の回復」</li>
+</ul>
 <h2 id="メモ">メモ</h2>
 <p><a href="https://togetter.com/li/1240029">https://togetter.com/li/1240029</a></p>
 <p>想像していたよりも、エンジニアリングのみでなく「働き方」「人、社会との向き合い方」について話されていた印象。「心理」に興味を持つことは大事であること、成功者やロールモデルの方の抽象化するためにも「人」への興味を忘れてはいけないなと思った。</p>
