@@ -126,6 +126,126 @@
 		</item>
 		
 		<item>
+			<title>golang エスケープ解析を調べてみる</title>
+			<link>https://yukinooz.github.io/posts/2021/20210602_go_escape_analysis/</link>
+			<pubDate>Wed, 02 Jun 2021 11:25:47 +0900</pubDate>
+			
+			<guid>https://yukinooz.github.io/posts/2021/20210602_go_escape_analysis/</guid>
+			<description>エスケープ解析 Escape Analysis Goコンパイラはエスケープ解析の際に基本的にスタック領域を割り当てし、 必要な時のみヒープ割り当てを行う。 関数内でのみ使うな</description>
+			<content type="html"><![CDATA[<h2 id="エスケープ解析escape-analysis">エスケープ解析　Escape Analysis</h2>
+<ul>
+<li>Goコンパイラはエスケープ解析の際に基本的にスタック領域を割り当てし、 必要な時のみヒープ割り当てを行う。</li>
+<li>関数内でのみ使うならスタック、他の関数で使う可能性あればヒープ。</li>
+<li>スタックはヒープと比較し、軽量かつ高速処理。</li>
+</ul>
+<p>ビルド時にオプションつけることで、エスケープ解析の際にどこでヒープ領域が使われたか確認できる</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="k">go</span> <span class="nx">build</span> <span class="o">-</span><span class="nx">gcflags</span> <span class="err">&#39;</span><span class="o">-</span><span class="nx">m</span><span class="err">&#39;</span>
+
+<span class="c1">// 詳細
+</span><span class="c1"></span><span class="k">go</span> <span class="nx">build</span> <span class="o">-</span><span class="nx">gcflags</span> <span class="err">&#39;</span><span class="o">-</span><span class="nx">m</span> <span class="o">-</span><span class="nx">m</span><span class="err">&#39;</span>
+</code></pre></div><p>can inline = インライン展開の条件を満たしている
+inlining call to = インライン展開
+does not escape = スタック領域
+does escape = ヒープ領域</p>
+<h2 id="例">例</h2>
+<ul>
+<li>スタックには上限があるため、メモリを多く必要とする場合はヒープ領域にエスケープされる</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">child</span><span class="p">(</span><span class="nx">data</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Fprintln</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">BenchmarkTooLarge</span><span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">B</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">N</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">data</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+        <span class="nf">child</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><pre><code>$ go test escape_analysis_test.go -bench . -gcflags=-m -benchmem
+# command-line-arguments [command-line-arguments.test]
+./escape_analysis_test.go:10:6: can inline child
+./escape_analysis_test.go:19:17: inlining call to child
+./escape_analysis_test.go:10:15: data does not escape
+./escape_analysis_test.go:12:18: ... argument does not escape
+./escape_analysis_test.go:12:33: len(data) escapes to heap　// fmt外部関数への引数はヒープへ
+./escape_analysis_test.go:16:24: b does not escape
+./escape_analysis_test.go:18:21: make([]int, 10000) escapes to heap　// 長さ10000のスライス割り当てはヒープへ
+./escape_analysis_test.go:19:17: ... argument does not escape
+./escape_analysis_test.go:19:17: len(data) escapes to heap
+
+BenchmarkTooLarge-8   	  150694	      7932 ns/op	   81920 B/op	       1 allocs/op
+</code></pre><ul>
+<li>インライン展開された関数内で確保したメモリはエスケープしない
+<ul>
+<li>allocate()でmake()でメモリ確保してreturnしているが、can inline allocate インライン展開されているためスタック領域が割り当てられる</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">child</span><span class="p">(</span><span class="nx">data</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Fprintln</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">allocate</span><span class="p">()</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">{</span> 
+    <span class="k">return</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> 
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">BenchmarkAllocateInFunction</span><span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">B</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">N</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">data</span> <span class="o">:=</span> <span class="nf">allocate</span><span class="p">()</span>
+        <span class="nf">child</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><pre><code>$ go test escape_analysis_test.go -bench . -gcflags=-m -benchmem
+# command-line-arguments [command-line-arguments.test]
+./escape_analysis_test.go:10:6: can inline child
+./escape_analysis_test.go:16:6: can inline allocate // BenchmarkAllocateInFunction内でインライン展開される
+./escape_analysis_test.go:39:25: inlining call to allocate
+./escape_analysis_test.go:40:17: inlining call to child
+./escape_analysis_test.go:10:15: data does not escape
+./escape_analysis_test.go:12:18: ... argument does not escape
+./escape_analysis_test.go:12:33: len(data) escapes to heap
+./escape_analysis_test.go:16:36: make([]int, 1) escapes to heap 
+./escape_analysis_test.go:37:34: b does not escape
+./escape_analysis_test.go:39:25: make([]int, 1) does not escape // スタックへ
+./escape_analysis_test.go:40:17: ... argument does not escape
+./escape_analysis_test.go:40:17: len(data) escapes to heap
+
+BenchmarkAllocateInFunction-8   	1000000000	         0.502 ns/op	       0 B/op	       0 allocs/op
+</code></pre><ul>
+<li>new()でもスタック使われることはある</li>
+</ul>
+<pre><code>type candy struct {
+	color string
+	count int
+}
+
+func main() {
+	_ = child()
+}
+
+func child() *candy {
+	a := new(candy)
+	a.color = &quot;red&quot;
+	a.count = 3
+	return &amp;candy{}
+}
+</code></pre><pre><code>$ go build -gcflags -m test.go
+# command-line-arguments
+./test.go:12:6: can inline child
+./test.go:8:6: can inline main
+./test.go:9:14: inlining call to child
+./test.go:9:14: new(candy) does not escape 
+./test.go:9:14: &amp;candy literal does not escape
+./test.go:13:11: new(candy) does not escape　// new()でもスコープが関数内のみの場合はスタック
+./test.go:16:10: &amp;candy literal escapes to heap // 関数の外で扱われる（と判断された）ためエスケープ
+</code></pre>]]></content>
+		</item>
+		
+		<item>
 			<title>golang append()のメモリ割り当て</title>
 			<link>https://yukinooz.github.io/posts/2021/20210527_go_memory/</link>
 			<pubDate>Thu, 27 May 2021 22:15:47 +0900</pubDate>

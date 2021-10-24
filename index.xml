@@ -36,6 +36,15 @@
     </item>
     
     <item>
+      <title>golang エスケープ解析を調べてみる</title>
+      <link>https://yukinooz.github.io/posts/2021/20210602_go_escape_analysis/</link>
+      <pubDate>Wed, 02 Jun 2021 11:25:47 +0900</pubDate>
+      
+      <guid>https://yukinooz.github.io/posts/2021/20210602_go_escape_analysis/</guid>
+      <description>エスケープ解析 Escape Analysis Goコンパイラはエスケープ解析の際に基本的にスタック領域を割り当てし、 必要な時のみヒープ割り当てを行う。 関数内でのみ使うな</description>
+    </item>
+    
+    <item>
       <title>golang append()のメモリ割り当て</title>
       <link>https://yukinooz.github.io/posts/2021/20210527_go_memory/</link>
       <pubDate>Thu, 27 May 2021 22:15:47 +0900</pubDate>
