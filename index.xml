@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright since 2020 Reona Shimada All Rights Reserved.</copyright>
-    <lastBuildDate>Sat, 16 Oct 2021 10:16:47 +0900</lastBuildDate><atom:link href="https://yukinooz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Oct 2021 08:42:47 +0900</lastBuildDate><atom:link href="https://yukinooz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>転職活動まとめ</title>
+      <link>https://yukinooz.github.io/posts/2021/20211027_job_change/</link>
+      <pubDate>Wed, 27 Oct 2021 08:42:47 +0900</pubDate>
+      
+      <guid>https://yukinooz.github.io/posts/2021/20211027_job_change/</guid>
+      <description>転職理由 エンジニアとして働き始めて3年目、いい意味でも悪い意味でも現職は居心地のいい場所になっており、環境を変えて、新しい言語、技術などにチ</description>
+    </item>
+    
     <item>
       <title>ロンドン大学のCS オンライン学士に入学をした</title>
       <link>https://yukinooz.github.io/posts/2021/20211016_uol_enroll/</link>
@@ -87,15 +96,6 @@
       
       <guid>https://yukinooz.github.io/posts/2019/20191028_oop_memory/</guid>
       <description>オブジェクト指向でなぜ作るのか 「オブジェクト指向でなぜ作るのか」の第５章「メモリの仕組みの理解はプログラマのたしなみ」を読んだので、メモ。 一</description>
-    </item>
-    
-    <item>
-      <title>Team Geekを読んで</title>
-      <link>https://yukinooz.github.io/posts/2019/20191008_teamgeek/</link>
-      <pubDate>Tue, 08 Oct 2019 10:15:47 +0900</pubDate>
-      
-      <guid>https://yukinooz.github.io/posts/2019/20191008_teamgeek/</guid>
-      <description>Team Geek はじめに プログラマという職業は常にチームで仕事をし、&amp;ldquo;チーム&amp;quot;は個人の幸福他、生産性に大きな影響を与えている。 ソフ</description>
     </item>
     
   </channel>
