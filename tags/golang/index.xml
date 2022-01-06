@@ -2,54 +2,54 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>golang on Wouldn&#39;t It Be Nice</title>
-    <link>https://yukinooz.github.io/tags/golang/</link>
+    <link>https://snowwwz.github.io/tags/golang/</link>
     <description>Recent content in golang on Wouldn&#39;t It Be Nice</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright since 2020 Reona Shimada All Rights Reserved.</copyright>
-    <lastBuildDate>Thu, 03 Jun 2021 11:25:47 +0900</lastBuildDate><atom:link href="https://yukinooz.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 03 Jun 2021 11:25:47 +0900</lastBuildDate><atom:link href="https://snowwwz.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>goroutine</title>
-      <link>https://yukinooz.github.io/posts/2021/20210603_goroutine/</link>
+      <link>https://snowwwz.github.io/posts/2021/20210603_goroutine/</link>
       <pubDate>Thu, 03 Jun 2021 11:25:47 +0900</pubDate>
       
-      <guid>https://yukinooz.github.io/posts/2021/20210603_goroutine/</guid>
+      <guid>https://snowwwz.github.io/posts/2021/20210603_goroutine/</guid>
       <description>Goroutine A goroutine is a lightweight thread managed by the Go runtime. A tour of go: goroutinne 引数の評価は既存のgoroutineで行い、実行だけ別のgoroutineを使用して行う。 go f(x, y, z) Channel Channels are a</description>
     </item>
     
     <item>
       <title>golang エスケープ解析を調べてみる</title>
-      <link>https://yukinooz.github.io/posts/2021/20210602_go_escape_analysis/</link>
+      <link>https://snowwwz.github.io/posts/2021/20210602_go_escape_analysis/</link>
       <pubDate>Wed, 02 Jun 2021 11:25:47 +0900</pubDate>
       
-      <guid>https://yukinooz.github.io/posts/2021/20210602_go_escape_analysis/</guid>
+      <guid>https://snowwwz.github.io/posts/2021/20210602_go_escape_analysis/</guid>
       <description>エスケープ解析 Escape Analysis Goコンパイラはエスケープ解析の際に基本的にスタック領域を割り当てし、 必要な時のみヒープ割り当てを行う。 関数内でのみ使うな</description>
     </item>
     
     <item>
       <title>golang append()のメモリ割り当て</title>
-      <link>https://yukinooz.github.io/posts/2021/20210527_go_memory/</link>
+      <link>https://snowwwz.github.io/posts/2021/20210527_go_memory/</link>
       <pubDate>Thu, 27 May 2021 22:15:47 +0900</pubDate>
       
-      <guid>https://yukinooz.github.io/posts/2021/20210527_go_memory/</guid>
+      <guid>https://snowwwz.github.io/posts/2021/20210527_go_memory/</guid>
       <description>makeのcapacityは確保するメモリの効率化のためスライスのMAXの長さを指す。 capacityを超えた場合、要素数 × 2 の容量が確保さ</description>
     </item>
     
     <item>
       <title>golang interfaceとは</title>
-      <link>https://yukinooz.github.io/posts/2021/20210527_go_interface/</link>
+      <link>https://snowwwz.github.io/posts/2021/20210527_go_interface/</link>
       <pubDate>Thu, 27 May 2021 11:25:47 +0900</pubDate>
       
-      <guid>https://yukinooz.github.io/posts/2021/20210527_go_interface/</guid>
+      <guid>https://snowwwz.github.io/posts/2021/20210527_go_interface/</guid>
       <description>Interface 中身のない型 何でも入る型 func main() { var i interface{} i = 4 fmt.Println(i) //4 i = 3.5 fmt.Println(i) //3.5 i = &amp;#34;文字列&amp;#34; fmt.Println(i) //文字列 } 型変換 // (interfaceの変数).</description>
     </item>
     
     <item>
       <title>golang deferの挙動</title>
-      <link>https://yukinooz.github.io/posts/2020/20201120_go_defer/</link>
+      <link>https://snowwwz.github.io/posts/2020/20201120_go_defer/</link>
       <pubDate>Fri, 20 Nov 2020 13:15:47 +0900</pubDate>
       
-      <guid>https://yukinooz.github.io/posts/2020/20201120_go_defer/</guid>
+      <guid>https://snowwwz.github.io/posts/2020/20201120_go_defer/</guid>
       <description>defer A defer statement defers the execution of a function until the surrounding function returns. The deferred call&amp;rsquo;s arguments are evaluated immediately, but the function call is not executed until the surrounding function returns. A tour of go: defer 関数が終了する際に実行すべき処理を記述できる 遅延実行される関数</description>
     </item>
     

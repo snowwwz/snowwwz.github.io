@@ -1,33 +1,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Posts on Wouldn&#39;t It Be Nice</title>
-		<link>https://yukinooz.github.io/posts/</link>
+		<link>https://snowwwz.github.io/posts/</link>
 		<description>Recent content in Posts on Wouldn&#39;t It Be Nice</description>
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>Copyright since 2020 Reona Shimada All Rights Reserved.</copyright>
 		<lastBuildDate>Wed, 27 Oct 2021 08:42:47 +0900</lastBuildDate>
-		<atom:link href="https://yukinooz.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+		<atom:link href="https://snowwwz.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
 			<title>転職活動まとめ</title>
-			<link>https://yukinooz.github.io/posts/2021/20211027_job_change/</link>
+			<link>https://snowwwz.github.io/posts/2021/20211027_job_change/</link>
 			<pubDate>Wed, 27 Oct 2021 08:42:47 +0900</pubDate>
 			
-			<guid>https://yukinooz.github.io/posts/2021/20211027_job_change/</guid>
-			<description>背景 エンジニアとして働き始めて3年目、いい意味でも悪い意味でも現職は居心地のいい場所になっており、環境を変えて、新しい言語や技術などにチャレ</description>
+			<guid>https://snowwwz.github.io/posts/2021/20211027_job_change/</guid>
+			<description>背景 エンジニアとして働き始めて 3 年目、いい意味でも悪い意味でも現職は居心地のいい場所になっており、環境を変えて、新しい言語や技術などにチャレ</description>
 			<content type="html"><![CDATA[<h2 id="背景">背景</h2>
-<p>エンジニアとして働き始めて3年目、いい意味でも悪い意味でも現職は居心地のいい場所になっており、環境を変えて、新しい言語や技術などにチャレンジしたかったので。</p>
+<p>エンジニアとして働き始めて 3 年目、いい意味でも悪い意味でも現職は居心地のいい場所になっており、環境を変えて、新しい言語や技術などにチャレンジしたかった。</p>
 <h2 id="エージェント">エージェント</h2>
-<p>レバテックキャリアのみ。
+<p>レバテックキャリア
 企業紹介から面接スケジュール調整、面接対策等大変お世話になった。
-担当エージェントとのコミュニケーションツールがLINEで楽だったし、相手には仕事でも応援してくれる人がいるのは嬉しい。</p>
+担当エージェントとのコミュニケーションツールが LINE で楽だったし、相手には仕事でも応援してくれる人がいるのは嬉しい。</p>
 <h2 id="使ったサービスツール">使ったサービス/ツール</h2>
 <ul>
-<li>企業調査は、公式HPの社員紹介、テックブログ、qiita、Wantedly、open workとか</li>
+<li>企業調査は、公式 HP の社員紹介、テックブログ、qiita、Wantedly、open work とか</li>
 <li>履歴書作成 <a href="https://rirekisho.yagish.jp/">yagish ブラウザでつくれる履歴書</a></li>
-<li>結局使ってないけど、求人はLinkedinでも見てた。</li>
-<li>聞かれそうな質問とその回答はgoogle splead sheetにまとめた。</li>
+<li>結局使ってないけど、求人は Linkedin でも見てた。</li>
+<li>聞かれそうな質問とその回答は google splead sheet にまとめた。</li>
 </ul>
 <h2 id="会社選びの軸">会社選びの軸</h2>
 <ul>
@@ -66,18 +66,18 @@
 </ul>
 <p>etc</p>
 <h2 id="結果">結果</h2>
-<p>9/3にエージェントとの面談して10/13の最終面接で第一希望の企業から内定いただいたので期間は1ヶ月半弱。
-書類/面接選考に加え、技術試験は3社、SPI2社、CAB/適正試験は2社から求められた。</p>
+<p>9/3 にエージェントとの面談して 10/13 の最終面接で第一希望の企業から内定いただいたので期間は 1 ヶ月半弱。
+書類/面接選考に加え、技術試験は 3 社、SPI2 社、CAB/適正試験は 2 社から求められた。</p>
 <ul>
-<li>検討企業約70社（紹介68社+LinkedInで3~5社程度）</li>
-<li>応募数10社</li>
-<li>内定1社</li>
-<li>最終面接辞退1社</li>
-<li>2次面接辞退1社</li>
-<li>1次面接辞退1社</li>
-<li>1次面接落ち2社</li>
-<li>書類選考落ち3社</li>
-<li>技術試験落ち1社</li>
+<li>検討企業約 70 社（紹介 68 社+LinkedIn で 3~5 社程度）</li>
+<li>応募数 10 社</li>
+<li>内定 1 社</li>
+<li>最終面接辞退 1 社</li>
+<li>2 次面接辞退 1 社</li>
+<li>1 次面接辞退 1 社</li>
+<li>1 次面接落ち 2 社</li>
+<li>書類選考落ち 3 社</li>
+<li>技術試験落ち 1 社</li>
 </ul>
 <h2 id="コロナ禍での転職活動">コロナ禍での転職活動</h2>
 <p>エージェント面談から、選考企業の面接も全部オンラインで完結したので、現職も基本休みとらずに進められだいぶやりやすかった。</p>
@@ -86,10 +86,10 @@
 		
 		<item>
 			<title>ロンドン大学のCS オンライン学士に入学をした</title>
-			<link>https://yukinooz.github.io/posts/2021/20211016_uol_enroll/</link>
+			<link>https://snowwwz.github.io/posts/2021/20211016_uol_enroll/</link>
 			<pubDate>Sat, 16 Oct 2021 10:16:47 +0900</pubDate>
 			
-			<guid>https://yukinooz.github.io/posts/2021/20211016_uol_enroll/</guid>
+			<guid>https://snowwwz.github.io/posts/2021/20211016_uol_enroll/</guid>
 			<description>概要 Coursera上の学士プログラム、ロンドン大学BSc CSに2021年10月より入学した。 会社は辞めないので、パートタイムで単位取得して</description>
 			<content type="html"><![CDATA[<h1 id="概要">概要</h1>
 <p>Coursera上の学士プログラム、ロンドン大学BSc CSに2021年10月より入学した。
@@ -113,10 +113,10 @@
 		
 		<item>
 			<title>Learning How to Learn</title>
-			<link>https://yukinooz.github.io/posts/2021/20210910_learn_how_to_learn/</link>
+			<link>https://snowwwz.github.io/posts/2021/20210910_learn_how_to_learn/</link>
 			<pubDate>Fri, 10 Sep 2021 10:20:00 +0900</pubDate>
 			
-			<guid>https://yukinooz.github.io/posts/2021/20210910_learn_how_to_learn/</guid>
+			<guid>https://snowwwz.github.io/posts/2021/20210910_learn_how_to_learn/</guid>
 			<description>Learning How to Learn: Powerful mental tools to help you master tough subjects tips Keep a planner journal quitting timeも書いておく Commit yourself to certain routines and tasks each day Delay rewards until you finish the task Watch out for procrastination cues Gain trust in your new system Have backup plans for when you still procrastinate Eat your frogs first todoist Eat</description>
 			<content type="html"><![CDATA[<p><a href="https://www.coursera.org/learn/learning-how-to-learn">Learning How to Learn: Powerful mental tools to help you master tough subjects</a></p>
 <h2 id="tips">tips</h2>
@@ -146,10 +146,10 @@
 		
 		<item>
 			<title>goroutine</title>
-			<link>https://yukinooz.github.io/posts/2021/20210603_goroutine/</link>
+			<link>https://snowwwz.github.io/posts/2021/20210603_goroutine/</link>
 			<pubDate>Thu, 03 Jun 2021 11:25:47 +0900</pubDate>
 			
-			<guid>https://yukinooz.github.io/posts/2021/20210603_goroutine/</guid>
+			<guid>https://snowwwz.github.io/posts/2021/20210603_goroutine/</guid>
 			<description>Goroutine A goroutine is a lightweight thread managed by the Go runtime. A tour of go: goroutinne 引数の評価は既存のgoroutineで行い、実行だけ別のgoroutineを使用して行う。 go f(x, y, z) Channel Channels are a</description>
 			<content type="html"><![CDATA[<h1 id="goroutine">Goroutine</h1>
 <blockquote>
@@ -202,10 +202,10 @@
 		
 		<item>
 			<title>golang エスケープ解析を調べてみる</title>
-			<link>https://yukinooz.github.io/posts/2021/20210602_go_escape_analysis/</link>
+			<link>https://snowwwz.github.io/posts/2021/20210602_go_escape_analysis/</link>
 			<pubDate>Wed, 02 Jun 2021 11:25:47 +0900</pubDate>
 			
-			<guid>https://yukinooz.github.io/posts/2021/20210602_go_escape_analysis/</guid>
+			<guid>https://snowwwz.github.io/posts/2021/20210602_go_escape_analysis/</guid>
 			<description>エスケープ解析 Escape Analysis Goコンパイラはエスケープ解析の際に基本的にスタック領域を割り当てし、 必要な時のみヒープ割り当てを行う。 関数内でのみ使うな</description>
 			<content type="html"><![CDATA[<h2 id="エスケープ解析escape-analysis">エスケープ解析　Escape Analysis</h2>
 <ul>
@@ -322,10 +322,10 @@ func child() *candy {
 		
 		<item>
 			<title>golang append()のメモリ割り当て</title>
-			<link>https://yukinooz.github.io/posts/2021/20210527_go_memory/</link>
+			<link>https://snowwwz.github.io/posts/2021/20210527_go_memory/</link>
 			<pubDate>Thu, 27 May 2021 22:15:47 +0900</pubDate>
 			
-			<guid>https://yukinooz.github.io/posts/2021/20210527_go_memory/</guid>
+			<guid>https://snowwwz.github.io/posts/2021/20210527_go_memory/</guid>
 			<description>makeのcapacityは確保するメモリの効率化のためスライスのMAXの長さを指す。 capacityを超えた場合、要素数 × 2 の容量が確保さ</description>
 			<content type="html"><![CDATA[<ul>
 <li>makeのcapacityは確保するメモリの効率化のためスライスのMAXの長さを指す。</li>
@@ -394,10 +394,10 @@ ok      command-line-arguments  3.245s
 		
 		<item>
 			<title>golang interfaceとは</title>
-			<link>https://yukinooz.github.io/posts/2021/20210527_go_interface/</link>
+			<link>https://snowwwz.github.io/posts/2021/20210527_go_interface/</link>
 			<pubDate>Thu, 27 May 2021 11:25:47 +0900</pubDate>
 			
-			<guid>https://yukinooz.github.io/posts/2021/20210527_go_interface/</guid>
+			<guid>https://snowwwz.github.io/posts/2021/20210527_go_interface/</guid>
 			<description>Interface 中身のない型 何でも入る型 func main() { var i interface{} i = 4 fmt.Println(i) //4 i = 3.5 fmt.Println(i) //3.5 i = &amp;#34;文字列&amp;#34; fmt.Println(i) //文字列 } 型変換 // (interfaceの変数).</description>
 			<content type="html"><![CDATA[<h1 id="interface">Interface</h1>
 <ul>
@@ -492,10 +492,10 @@ struct2 does not implement Interface (missing add method)</p>
 		
 		<item>
 			<title>golang deferの挙動</title>
-			<link>https://yukinooz.github.io/posts/2020/20201120_go_defer/</link>
+			<link>https://snowwwz.github.io/posts/2020/20201120_go_defer/</link>
 			<pubDate>Fri, 20 Nov 2020 13:15:47 +0900</pubDate>
 			
-			<guid>https://yukinooz.github.io/posts/2020/20201120_go_defer/</guid>
+			<guid>https://snowwwz.github.io/posts/2020/20201120_go_defer/</guid>
 			<description>defer A defer statement defers the execution of a function until the surrounding function returns. The deferred call&amp;rsquo;s arguments are evaluated immediately, but the function call is not executed until the surrounding function returns. A tour of go: defer 関数が終了する際に実行すべき処理を記述できる 遅延実行される関数</description>
 			<content type="html"><![CDATA[<h1 id="defer">defer</h1>
 <blockquote>
@@ -650,10 +650,10 @@ The deferred call&rsquo;s arguments are evaluated immediately, but the function 
 		
 		<item>
 			<title>Jenkins導入とNginxでリバースプロキシ設定</title>
-			<link>https://yukinooz.github.io/posts/2019/20191108_jenkins_nginx/</link>
+			<link>https://snowwwz.github.io/posts/2019/20191108_jenkins_nginx/</link>
 			<pubDate>Fri, 08 Nov 2019 10:20:00 +0900</pubDate>
 			
-			<guid>https://yukinooz.github.io/posts/2019/20191108_jenkins_nginx/</guid>
+			<guid>https://snowwwz.github.io/posts/2019/20191108_jenkins_nginx/</guid>
 			<description>業務でCIツールとしてJenkinsを入れることになったので、その時の記録。 jenkinsの説明は、Jenkinsとはなんぞや？​が簡潔でわ</description>
 			<content type="html"><![CDATA[<p>業務でCIツールとしてJenkinsを入れることになったので、その時の記録。
 jenkinsの説明は、<a href="https://qiita.com/ko8@github/items/e6e058976d48d3fc3424">Jenkinsとはなんぞや？</a>​が簡潔でわかりやすかった。</p>
@@ -774,10 +774,10 @@ systemctl restart nginx
 		
 		<item>
 			<title>メモリの仕組みの理解はプログラマの嗜み</title>
-			<link>https://yukinooz.github.io/posts/2019/20191028_oop_memory/</link>
+			<link>https://snowwwz.github.io/posts/2019/20191028_oop_memory/</link>
 			<pubDate>Mon, 28 Oct 2019 10:20:00 +0900</pubDate>
 			
-			<guid>https://yukinooz.github.io/posts/2019/20191028_oop_memory/</guid>
+			<guid>https://snowwwz.github.io/posts/2019/20191028_oop_memory/</guid>
 			<description>オブジェクト指向でなぜ作るのか 「オブジェクト指向でなぜ作るのか」の第５章「メモリの仕組みの理解はプログラマのたしなみ」を読んだので、メモ。 一</description>
 			<content type="html"><![CDATA[<h2 id="オブジェクト指向でなぜ作るのか">オブジェクト指向でなぜ作るのか</h2>
 <p>「オブジェクト指向でなぜ作るのか」の第５章「メモリの仕組みの理解はプログラマのたしなみ」を読んだので、メモ。</p>
@@ -861,10 +861,10 @@ systemctl restart nginx
 		
 		<item>
 			<title>Team Geekを読んで</title>
-			<link>https://yukinooz.github.io/posts/2019/20191008_teamgeek/</link>
+			<link>https://snowwwz.github.io/posts/2019/20191008_teamgeek/</link>
 			<pubDate>Tue, 08 Oct 2019 10:15:47 +0900</pubDate>
 			
-			<guid>https://yukinooz.github.io/posts/2019/20191008_teamgeek/</guid>
+			<guid>https://snowwwz.github.io/posts/2019/20191008_teamgeek/</guid>
 			<description>Team Geek はじめに プログラマという職業は常にチームで仕事をし、&amp;ldquo;チーム&amp;quot;は個人の幸福他、生産性に大きな影響を与えている。 ソフ</description>
 			<content type="html"><![CDATA[<h1 id="team-geek">Team Geek</h1>
 <h2 id="はじめに">はじめに</h2>
@@ -951,10 +951,10 @@ systemctl restart nginx
 		
 		<item>
 			<title>スタートアップにおけるデザイン思考の重要性</title>
-			<link>https://yukinooz.github.io/posts/2018/20180807/</link>
+			<link>https://snowwwz.github.io/posts/2018/20180807/</link>
 			<pubDate>Fri, 06 Jul 2018 10:15:47 +0900</pubDate>
 			
-			<guid>https://yukinooz.github.io/posts/2018/20180807/</guid>
+			<guid>https://snowwwz.github.io/posts/2018/20180807/</guid>
 			<description>goodpatch UIUX専業企業、スタートアップと協業、金融系サービスの幅広い知見 SBI証券とも デザイン会社と組むように？ コミックデイズ（講談社）（漫画に</description>
 			<content type="html"><![CDATA[<h2 id="goodpatch">goodpatch</h2>
 <ul>
@@ -1041,10 +1041,10 @@ UIデザイン
 		
 		<item>
 			<title>米国サンフランシスコのエンジニア&amp;スタートアップのリアルな話</title>
-			<link>https://yukinooz.github.io/posts/2018/20180704/</link>
+			<link>https://snowwwz.github.io/posts/2018/20180704/</link>
 			<pubDate>Wed, 04 Jul 2018 10:15:47 +0900</pubDate>
 			
-			<guid>https://yukinooz.github.io/posts/2018/20180704/</guid>
+			<guid>https://snowwwz.github.io/posts/2018/20180704/</guid>
 			<description>エンジニアがSFで働くリアルな話 家賃は高い、1roomで月３０万くらい SF住んで楽しいのは世界最先端のプロダクトが普通に使われていること サン</description>
 			<content type="html"><![CDATA[<h2 id="エンジニアがsfで働くリアルな話">エンジニアがSFで働くリアルな話</h2>
 <ul>
@@ -1138,10 +1138,10 @@ UIデザイン
 		
 		<item>
 			<title>【まつもとゆきひろ氏　特別講演】若手エンジニアの生存戦略</title>
-			<link>https://yukinooz.github.io/posts/2018/20180623/</link>
+			<link>https://snowwwz.github.io/posts/2018/20180623/</link>
 			<pubDate>Sun, 24 Jun 2018 10:15:47 +0900</pubDate>
 			
-			<guid>https://yukinooz.github.io/posts/2018/20180623/</guid>
+			<guid>https://snowwwz.github.io/posts/2018/20180623/</guid>
 			<description>まつもとゆきひろさん（Matz） 通称は英語圏では覚えてくれないから rubyを作った人 IT業界で最も影響力のある100人に日本人ひとり選ばれた</description>
 			<content type="html"><![CDATA[<h2 id="まつもとゆきひろさんmatz">まつもとゆきひろさん（Matz）</h2>
 <ul>

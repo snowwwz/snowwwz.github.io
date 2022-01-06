@@ -2,99 +2,99 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Wouldn&#39;t It Be Nice</title>
-    <link>https://yukinooz.github.io/</link>
+    <link>https://snowwwz.github.io/</link>
     <description>Recent content on Wouldn&#39;t It Be Nice</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright since 2020 Reona Shimada All Rights Reserved.</copyright>
-    <lastBuildDate>Wed, 27 Oct 2021 08:42:47 +0900</lastBuildDate><atom:link href="https://yukinooz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Oct 2021 08:42:47 +0900</lastBuildDate><atom:link href="https://snowwwz.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>転職活動まとめ</title>
-      <link>https://yukinooz.github.io/posts/2021/20211027_job_change/</link>
+      <link>https://snowwwz.github.io/posts/2021/20211027_job_change/</link>
       <pubDate>Wed, 27 Oct 2021 08:42:47 +0900</pubDate>
       
-      <guid>https://yukinooz.github.io/posts/2021/20211027_job_change/</guid>
-      <description>背景 エンジニアとして働き始めて3年目、いい意味でも悪い意味でも現職は居心地のいい場所になっており、環境を変えて、新しい言語や技術などにチャレ</description>
+      <guid>https://snowwwz.github.io/posts/2021/20211027_job_change/</guid>
+      <description>背景 エンジニアとして働き始めて 3 年目、いい意味でも悪い意味でも現職は居心地のいい場所になっており、環境を変えて、新しい言語や技術などにチャレ</description>
     </item>
     
     <item>
       <title>ロンドン大学のCS オンライン学士に入学をした</title>
-      <link>https://yukinooz.github.io/posts/2021/20211016_uol_enroll/</link>
+      <link>https://snowwwz.github.io/posts/2021/20211016_uol_enroll/</link>
       <pubDate>Sat, 16 Oct 2021 10:16:47 +0900</pubDate>
       
-      <guid>https://yukinooz.github.io/posts/2021/20211016_uol_enroll/</guid>
+      <guid>https://snowwwz.github.io/posts/2021/20211016_uol_enroll/</guid>
       <description>概要 Coursera上の学士プログラム、ロンドン大学BSc CSに2021年10月より入学した。 会社は辞めないので、パートタイムで単位取得して</description>
     </item>
     
     <item>
       <title>Learning How to Learn</title>
-      <link>https://yukinooz.github.io/posts/2021/20210910_learn_how_to_learn/</link>
+      <link>https://snowwwz.github.io/posts/2021/20210910_learn_how_to_learn/</link>
       <pubDate>Fri, 10 Sep 2021 10:20:00 +0900</pubDate>
       
-      <guid>https://yukinooz.github.io/posts/2021/20210910_learn_how_to_learn/</guid>
+      <guid>https://snowwwz.github.io/posts/2021/20210910_learn_how_to_learn/</guid>
       <description>Learning How to Learn: Powerful mental tools to help you master tough subjects tips Keep a planner journal quitting timeも書いておく Commit yourself to certain routines and tasks each day Delay rewards until you finish the task Watch out for procrastination cues Gain trust in your new system Have backup plans for when you still procrastinate Eat your frogs first todoist Eat</description>
     </item>
     
     <item>
       <title>goroutine</title>
-      <link>https://yukinooz.github.io/posts/2021/20210603_goroutine/</link>
+      <link>https://snowwwz.github.io/posts/2021/20210603_goroutine/</link>
       <pubDate>Thu, 03 Jun 2021 11:25:47 +0900</pubDate>
       
-      <guid>https://yukinooz.github.io/posts/2021/20210603_goroutine/</guid>
+      <guid>https://snowwwz.github.io/posts/2021/20210603_goroutine/</guid>
       <description>Goroutine A goroutine is a lightweight thread managed by the Go runtime. A tour of go: goroutinne 引数の評価は既存のgoroutineで行い、実行だけ別のgoroutineを使用して行う。 go f(x, y, z) Channel Channels are a</description>
     </item>
     
     <item>
       <title>golang エスケープ解析を調べてみる</title>
-      <link>https://yukinooz.github.io/posts/2021/20210602_go_escape_analysis/</link>
+      <link>https://snowwwz.github.io/posts/2021/20210602_go_escape_analysis/</link>
       <pubDate>Wed, 02 Jun 2021 11:25:47 +0900</pubDate>
       
-      <guid>https://yukinooz.github.io/posts/2021/20210602_go_escape_analysis/</guid>
+      <guid>https://snowwwz.github.io/posts/2021/20210602_go_escape_analysis/</guid>
       <description>エスケープ解析 Escape Analysis Goコンパイラはエスケープ解析の際に基本的にスタック領域を割り当てし、 必要な時のみヒープ割り当てを行う。 関数内でのみ使うな</description>
     </item>
     
     <item>
       <title>golang append()のメモリ割り当て</title>
-      <link>https://yukinooz.github.io/posts/2021/20210527_go_memory/</link>
+      <link>https://snowwwz.github.io/posts/2021/20210527_go_memory/</link>
       <pubDate>Thu, 27 May 2021 22:15:47 +0900</pubDate>
       
-      <guid>https://yukinooz.github.io/posts/2021/20210527_go_memory/</guid>
+      <guid>https://snowwwz.github.io/posts/2021/20210527_go_memory/</guid>
       <description>makeのcapacityは確保するメモリの効率化のためスライスのMAXの長さを指す。 capacityを超えた場合、要素数 × 2 の容量が確保さ</description>
     </item>
     
     <item>
       <title>golang interfaceとは</title>
-      <link>https://yukinooz.github.io/posts/2021/20210527_go_interface/</link>
+      <link>https://snowwwz.github.io/posts/2021/20210527_go_interface/</link>
       <pubDate>Thu, 27 May 2021 11:25:47 +0900</pubDate>
       
-      <guid>https://yukinooz.github.io/posts/2021/20210527_go_interface/</guid>
+      <guid>https://snowwwz.github.io/posts/2021/20210527_go_interface/</guid>
       <description>Interface 中身のない型 何でも入る型 func main() { var i interface{} i = 4 fmt.Println(i) //4 i = 3.5 fmt.Println(i) //3.5 i = &amp;#34;文字列&amp;#34; fmt.Println(i) //文字列 } 型変換 // (interfaceの変数).</description>
     </item>
     
     <item>
       <title>golang deferの挙動</title>
-      <link>https://yukinooz.github.io/posts/2020/20201120_go_defer/</link>
+      <link>https://snowwwz.github.io/posts/2020/20201120_go_defer/</link>
       <pubDate>Fri, 20 Nov 2020 13:15:47 +0900</pubDate>
       
-      <guid>https://yukinooz.github.io/posts/2020/20201120_go_defer/</guid>
+      <guid>https://snowwwz.github.io/posts/2020/20201120_go_defer/</guid>
       <description>defer A defer statement defers the execution of a function until the surrounding function returns. The deferred call&amp;rsquo;s arguments are evaluated immediately, but the function call is not executed until the surrounding function returns. A tour of go: defer 関数が終了する際に実行すべき処理を記述できる 遅延実行される関数</description>
     </item>
     
     <item>
       <title>Jenkins導入とNginxでリバースプロキシ設定</title>
-      <link>https://yukinooz.github.io/posts/2019/20191108_jenkins_nginx/</link>
+      <link>https://snowwwz.github.io/posts/2019/20191108_jenkins_nginx/</link>
       <pubDate>Fri, 08 Nov 2019 10:20:00 +0900</pubDate>
       
-      <guid>https://yukinooz.github.io/posts/2019/20191108_jenkins_nginx/</guid>
+      <guid>https://snowwwz.github.io/posts/2019/20191108_jenkins_nginx/</guid>
       <description>業務でCIツールとしてJenkinsを入れることになったので、その時の記録。 jenkinsの説明は、Jenkinsとはなんぞや？​が簡潔でわ</description>
     </item>
     
     <item>
       <title>メモリの仕組みの理解はプログラマの嗜み</title>
-      <link>https://yukinooz.github.io/posts/2019/20191028_oop_memory/</link>
+      <link>https://snowwwz.github.io/posts/2019/20191028_oop_memory/</link>
       <pubDate>Mon, 28 Oct 2019 10:20:00 +0900</pubDate>
       
-      <guid>https://yukinooz.github.io/posts/2019/20191028_oop_memory/</guid>
+      <guid>https://snowwwz.github.io/posts/2019/20191028_oop_memory/</guid>
       <description>オブジェクト指向でなぜ作るのか 「オブジェクト指向でなぜ作るのか」の第５章「メモリの仕組みの理解はプログラマのたしなみ」を読んだので、メモ。 一</description>
     </item>
     
