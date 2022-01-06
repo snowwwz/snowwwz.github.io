@@ -1,4 +1,4 @@
-baseURL = "https://yukinooz.github.io/"
+baseURL = "https://snowwwz.github.io/"
 languageCode = "en-us"
 title = "Wouldn't It Be Nice"
 theme = "hermit"
@@ -10,10 +10,10 @@ hasCJKLanguage = true  # If Chinese/Japanese/Korean is your main content languag
 rssLimit = 10  # Maximum number of items in the RSS feed.
 copyright = "Copyright since 2020 Reona Shimada All Rights Reserved." # This message is only used by the RSS template.
 enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/functions/emojify/
-disqusShortname = "yukinooz-github-io"
+disqusShortname = "snowwwz-github-io"
 
 [author]
-  name = "@yukinooz"
+  name = "@snowwwz"
 
 [blackfriday]
   # hrefTargetBlank = true
@@ -46,7 +46,7 @@ disqusShortname = "yukinooz-github-io"
   # bgImg = ""  # Homepage background-image URL
 
   # Prefix of link to the git commit detail page. GitInfo must be enabled.
-  gitUrl = "https://github.com/yukinooz.github.io"
+  gitUrl = "https://github.com/snowwwz.github.io"
 
   # Toggling this option needs to rebuild SCSS, requires Hugo extended version
   justifyContent = false  # Set "text-align: justify" to `.content`.
@@ -63,7 +63,7 @@ disqusShortname = "yukinooz-github-io"
 
   [[params.social]]
     name = "github"
-    url = "https://github.com/yukinooz"
+    url = "https://github.com/snowwwz"
 
 [menu]
 
