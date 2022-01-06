@@ -1,6 +1,6 @@
 baseURL = "https://snowwwz.github.io/"
 languageCode = "en-us"
-title = "Wouldn't It Be Nice"
+title = "@snowwwz"
 theme = "hermit"
 canonifyurls = true
 enableGitInfo = true
